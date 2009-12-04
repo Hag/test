@@ -1,4 +1,7 @@
-#include "CGame.cpp"
+#include "CGame.hpp"
+#include "GEngine.hpp"
+#include "MEngine.hpp"
+
 
 CGame::CGame()
   : _run(true)
@@ -6,25 +9,25 @@ CGame::CGame()
   _Me = new MEngine(this);
   _Ge = new GEngine(this);
   _Me -> linkGE(_Ge);
-  _Ge -> linkMe(_Me);
+  _Ge -> linkME(_Me);
 }
 
 CGame::~CGame()
 {
-  _Me = delete MEngine();
-  _Ge = delete GEngine();
+  delete _Me;
+  delete _Ge;
 }
 
-CGame::go()
+int CGame::go()
 {
   while( _run )
     {
-		_Me->frame();
-		_Ge->frame();
-	}
+      _Me->frame();
+      _Ge->frame();
+    }
 }
 
-CGame::stop()
+void CGame::stop()
 {
-  _run = false
+  _run = false;
 }

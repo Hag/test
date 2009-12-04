@@ -1,22 +1,38 @@
-#include "TEngine.hpp"
+#include "CGame.hpp"
+#include "Engine.hpp"
+#include "GEngine.hpp"
+#include "MEngine.hpp"
 
 
-TEngine::TEngine( CGame* Parent) :
+Engine::Engine( CGame* Parent) :
   _Parent(Parent)
-{}
-
-
-TEngine::push(CMessage m)
 {
-  _CMqueue.push(m);
+  _Mqueue = new MQ;
 }
 
 
-TEngine::processCMs()
+void Engine::push(Message& m)
 {
-  while( ! _CMqueue.empty() )
+  _Mqueue->push(m);
+}
+
+
+void Engine::processMs()
+{
+  while( ! _Mqueue->empty() )
     {
-      processCM( &_CMqueue.front() );
-      _CMqueue.pop();
+      processM( &_Mqueue->front() );
+      _Mqueue->pop();
     }
+}
+
+
+void Engine::linkGE(GEngine* Ge)
+{
+  _Ge = Ge;
+}
+
+void Engine::linkME(MEngine* Me)
+{
+  _Me = Me;
 }

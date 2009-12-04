@@ -1,40 +1,47 @@
-#ifndef TENGINE_H
-#define TENGINE_H
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include <queue>
 
 
 class CGame;
-class CMessage;
 class GEngine;
 class MEngine;
 
-typedef std::queue<CMessage> CMQ;
+
+class Message
+{
+public :
+  int truc;
+};
 
 
-class TEngine
+typedef std::queue<Message> MQ;
+
+
+class Engine
 {
 public :
 
-  TEngine(CGame* Parent);
-  virtual ~TEngine()=0;
+  Engine(CGame* Parent);
+  virtual ~Engine()=0;
 
   virtual void frame()=0;
 
-  void push(CMessage& m);
-  void processCMs();
-  virtual void processCM(CMessage* m;);
+  void push(Message& m);
+  void processMs();
+  virtual void processM(Message* m )  ;
 
   void linkGE(GEngine* GE);
   void linkME(MEngine* ME);
 
-private :
+protected :
 
   CGame* _Parent;
   GEngine* _Ge;
   MEngine* _Me;
 
-  CMQ* _CMqueue;
+  MQ* _Mqueue;
 
 };
 
