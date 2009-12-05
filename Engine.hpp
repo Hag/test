@@ -24,13 +24,13 @@ class Engine
 public :
 
   Engine(CGame* Parent);
-  virtual ~Engine()=0;
+  virtual ~Engine() {}
 
   virtual void frame()=0;
 
-  void push(Message& m);
+  void push(Message&);
   void processMs();
-  virtual void processM(Message* m )  ;
+  virtual void processM(Message*) {}
 
   void linkGE(GEngine* GE);
   void linkME(MEngine* ME);

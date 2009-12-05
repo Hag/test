@@ -25,6 +25,7 @@ int CGame::go()
       _Me->frame();
       _Ge->frame();
     }
+  return 0;
 }
 
 void CGame::stop()
