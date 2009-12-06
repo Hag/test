@@ -30,12 +30,13 @@ public :
 
   void push(Message&);
   void processMs();
-  virtual void processM(Message*) {}
 
   void linkGE(GEngine* GE);
   void linkME(MEngine* ME);
 
 protected :
+
+  virtual void processM(Message*) {}
 
   CGame* _Parent;
   GEngine* _Ge;

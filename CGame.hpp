@@ -2,6 +2,7 @@
 #define CGAME_H
 
 class GEngine;
+class GWindow;
 class MEngine;
 
 class CGame
@@ -13,11 +14,16 @@ public :
   int go();
   void stop();
 
+  inline GWindow* window() { return _W; }
+
 private :
   bool _run;
 
   MEngine* _Me;
   GEngine* _Ge;
+
+  GWindow* _W;
+
 };
 
 #endif

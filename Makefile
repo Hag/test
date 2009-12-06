@@ -3,7 +3,7 @@ NAME= 	v0
 
 CPP=	g++
 CFLAGS=	-W -Wall -ansi -pedantic
-LDFLAGS=
+LDFLAGS= -lsfml-window -lsfml-system -lsfml-graphics
 SRC=	$(wildcard *.cpp)
 OBJS= 	$(SRC:.cpp=.o)
 

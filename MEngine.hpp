@@ -15,9 +15,11 @@ public :
 
   void frame();
 
-  void processM(Message& m);
+  int c;
 
 private :
+
+  void processM(Message& m);
 
 };
 
